@@ -1,0 +1,46 @@
+<div class="why">
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
+
+
+<style>
+.why ul li {float:left; width:33.333%; opacity:0;}
+</style>
+
+
+<script type="text/javascript">
+$(function(){
+
+
+	var flag1 = 0;
+	var whyFade = function(){
+		var w = $(window).width();
+		var h = 0;
+		if (w > 900){ h = 500 }
+		else if (w < 900 && w > 540){ h = 340 }
+		else {h = 300}
+		var tmp = $(window).scrollTop() + h;
+		var target = $('.why').offset().top-100;
+		if (tmp > target){
+			if (flag1 == 0){
+				for (var i=0; i<3; i++ ){
+					$('.why ul li:eq(' + i +')').delay(500*i).animate({opacity:'1'},2000,'easeOutQuart');
+				};
+				flag1++;
+			}
+		}
+	};
+
+
+  // event control
+	$(window).scroll(function() {
+		whyFade();
+	});
+
+
+});
+</script>
